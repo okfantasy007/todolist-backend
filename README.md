@@ -288,7 +288,8 @@ router.post('/logout', function (req, res, next) {
 
 ### 统计在线用户列表并广播推送给各个已登录的终端
 
-这个功能主要是通过消息转发后台实现的，这里就不叙述了，详情可参见[node-websocket-msg-sender](https://github.com/okfantasy007/node-websocket-msg-sender "node-websocket-msg-sender")
+这个功能主要是通过消息转发后台实现的，这里就不叙述了，详情可参见[
+todolist-msg（todolist消息推送后台）](https://github.com/okfantasy007/todolist-msg.git "todolist-msg（todolist消息推送后台）")
 
 ### 数据库事务
 
