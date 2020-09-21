@@ -420,8 +420,9 @@ router.post('/delete', function (req, res, next) {
 ## 部署
 
 该项目结合自己搭建的jenkins实现自动化部署。
+![部署](https://github.com/okfantasy007/todolist-backend/blob/master/public/deploy/todolist-backend%EF%BC%88jenkins%EF%BC%89%20.png "部署")
 
-### Build阶段
+### 构建阶段
 
 ```shell
 node -v
@@ -430,11 +431,11 @@ npm -v
 npm install
 #如果myapp.tar.gz存在，则删除；如果myapp.tar.gz不存在，则不进行删除操作
 rm -rf myapp.tar.gz
-#将当前workspace目录下的所有文件压缩到myapp.tar.gz
+#将当前workspace目录下的所有文件压缩到myaap.tar.gz
 tar -czf myapp.tar.gz *
 ```
 
-### Post-Build阶段
+### 构建后操作阶段
 
 ```shell
 #!/bin/bash
@@ -462,7 +463,7 @@ tar vxf myapp.tar.gz -C ./myapp
 rm -rf myapp.tar.gz
 
 #pm2路径变量
-pm2=/root/node-v8.0.0-linux-x64/bin/pm2
+pm2=/usr/local/bin/pm2
 
 #www路径变量
 www=/home/liuyuanbing/todolist/backend/myapp/bin/www
@@ -508,13 +509,15 @@ CurrentPath=/home/liuyuanbing/todolist/backend
 LogFile="$CurrentPath/"run.log
 MaxSaveCount=2
 RunDir="myapp"
+RunDirRegex=^"$RunDir"_.*
 DirArr=()
 RetainArr=()
 echo "=====>一次清理log开始<=====" >> $LogFile
+echo $RunDirRegex
 for element in `ls $CurrentPath`
 do
 	dir_or_file=$CurrentPath"/"$element
-	if [[ -d $dir_or_file && "$element" != $RunDir && "$element" =~ ^myapp_.* ]]
+	if [[ -d $dir_or_file && "$element" != $RunDir && "$element" =~ $RunDirRegex ]]
 	then
 		DirArr=(${DirArr[@]} $element)
 	fi
@@ -554,7 +557,7 @@ then
 
 	echo "-----清理完成------" >> $LogFile
 else
-	echo "no more than $MaxSaveCount myapp copy dirs in $CurrentPath"
+	echo "no more than $MaxSaveCount $RunDir copy dirs in $CurrentPath"
 fi
 echo "=====>一次清理log结束<=====" >> $LogFile
 ```
