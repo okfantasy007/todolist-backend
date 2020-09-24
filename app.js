@@ -76,8 +76,8 @@ app.use(function (req, res, next) {
 //当全局变量中有了诸如连接数据库的动态赋值时，无法在其他文件中在读取静态资源阶段引用
 //当全局变量中只有读取静态配置文件信息时，是可以在其他文件中在读取静态资源阶段引用的
 global.APP = {};//全局变量
-APP.config = require('./config/default.json');//生产环境
-// APP.config = require('./config/default_dev.json');//家环境
+// APP.config = require('./config/default.json');//生产环境
+APP.config = require('./config/default_dev.json');//家环境
 // APP.config = require('./config/default_company.json');//公司环境
 
 //登录拦截器
