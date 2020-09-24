@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const request = require("request-promise");
-const userAgentList = require("../user-agent");
+const userAgentList = require("../ua");
 
 const proxyMode = true;
 
