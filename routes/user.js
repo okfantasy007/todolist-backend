@@ -554,7 +554,7 @@ router.post('/login', function (req, res, next) {
 
 			res.status(200).json({
 				success: true,
-				msg: "恭喜您！登录成功！加个鸡腿！",
+				msg: "恭喜您！登录成功！12222222！",
 				code: '0000',
 				data: req.session.login_user_info
 			});
