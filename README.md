@@ -420,7 +420,7 @@ router.post('/delete', function (req, res, next) {
 ## 部署
 
 该项目结合自己搭建的jenkins实现自动化部署。
-![部署](https://github.com/okfantasy007/todolist-backend/blob/master/public/deploy/todolist-backend%EF%BC%88jenkins%EF%BC%89%20.png "部署")
+![部署](https://github.com/okfantasy007/todolist-backend/blob/master/public/deploy/todolist-backend(jenkins).png "部署")
 
 ### 构建阶段
 
