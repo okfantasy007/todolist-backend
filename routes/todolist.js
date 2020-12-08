@@ -634,4 +634,13 @@ router.post('/delete', function (req, res, next) {
   });
 });
 
+//report
+router.post('/report', function (req, res, next) {
+  res.status(200).json({
+    success: false,
+    msg: 'report success',
+    code: '0001'
+  });
+});
+
 module.exports = router;
