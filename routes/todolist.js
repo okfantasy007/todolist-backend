@@ -636,6 +636,7 @@ router.post('/delete', function (req, res, next) {
 
 //report
 router.post('/report', function (req, res, next) {
+  console.log('params', req.body);
   res.status(200).json({
     success: false,
     msg: 'report success',
