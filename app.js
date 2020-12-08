@@ -95,6 +95,7 @@ app.use(function (req, res, next) {
         && url !== "/user/logout"
         && url !== "/user/send_private_todolist_msg"
         && url !== "/user/set_socket_id_to_user_session"
+        && url !== "/todolist/report"
         && !url.startsWith("/wish")) {
         res.status(200).json({
             success: true,
