@@ -2,7 +2,7 @@ var ioRedis = require('ioredis');
 var logger = require('morgan');
 var redis = new ioRedis({
     port: 6379,                  // Redis port
-    host: '120.78.86.143',           // Redis host
+    host: '127.0.0.1',           // Redis host
     family: 4,                   // 4 (IPv4) or 6 (IPv6)
     password: 'lyb171049',
     db: 0                       // 数据库号
