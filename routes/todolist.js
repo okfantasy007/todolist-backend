@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var sprintf = require('sprintf');
+var fs = require('fs');
+var https = require('https');
 
 /*
   `task_title` varchar(255) DEFAULT NULL,
@@ -642,6 +644,36 @@ router.post('/report', function (req, res, next) {
     msg: 'report success',
     code: '0000'
   });
+});
+
+/* validateSession */
+router.get('/validateSession', async (req, res, next) => {
+    const u = req.query.u;
+    try {
+        const httpsAgent = new https.Agent({
+            rejectUnauthorized: false,
+            cert: await fs.readFileSync(
+                path.join(__dirname, '/certificates/certificate_sandbox.pem')
+            ),
+            key: fs.readFileSync(
+                path.join(__dirname, '/certificates/certificate_sandbox.key')
+            )
+        });
+        const response = await axios.post(
+            u,
+            {
+                merchantIdentifier: 'merchant.wondershare.cloudservice',
+                domainName: 'msg.wondershare.cc',
+                displayName: 'Test Applepay',
+            },
+            {
+                httpsAgent
+            }
+        );
+        res.send(response.data);
+    } catch (e) {
+        res.send(e);
+    }
 });
 
 module.exports = router;
