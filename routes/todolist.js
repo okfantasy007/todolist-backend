@@ -671,6 +671,7 @@ router.get('/validateSession', async (req, res, next) => {
                 httpsAgent
             }
         );
+        console.log(response);
         res.send(response.data);
     } catch (e) {
         res.send(e);
